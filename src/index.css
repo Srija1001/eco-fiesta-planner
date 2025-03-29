@@ -1,92 +1,69 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 120 30% 97%;
+    --foreground: 122 50% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 122 50% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 122 50% 10%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 142 76% 36%;
+    --primary-foreground: 355 100% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 60 60% 95%;
+    --secondary-foreground: 24 9% 10%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 60 44% 94%;
+    --muted-foreground: 25 5% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 142 70% 96%;
+    --accent-foreground: 142 70% 20%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 120 5% 88%;
+    --input: 120 5% 88%;
+    --ring: 142 76% 36%;
 
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --radius: 0.75rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 126 30% 7%;
+    --foreground: 120 6% 93%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 126 30% 10%;
+    --card-foreground: 120 6% 93%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 126 30% 10%;
+    --popover-foreground: 120 6% 93%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 142 76% 36%;
+    --primary-foreground: 355 100% 100%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 120 14% 16%;
+    --secondary-foreground: 0 0% 93%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 120 14% 16%;
+    --muted-foreground: 120 6% 70%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 120 14% 23%;
+    --accent-foreground: 120 6% 93%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 74% 42%;
+    --destructive-foreground: 120 6% 93%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 120 14% 23%;
+    --input: 120 14% 23%;
+    --ring: 142 76% 36%;
   }
 }
 
@@ -97,5 +74,38 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
   }
+}
+
+.eco-gradient {
+  @apply bg-gradient-to-br from-eco-leaf to-eco-moss;
+}
+
+.leaf-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54.627,25.373c0,0-12.496,-12.497 -29.254,-12.497c-5.4,0 -10.772,1.395 -15.535,4.045c-2.515,1.396 -4.843,3.106 -6.925,5.089c-2.083,1.982 -3.895,4.225 -5.403,6.653c-0.205,0.328 -0.391,0.665 -0.567,1.005c-0.004,-0.001 -0.007,-0.004 -0.012,-0.005c0.1,0.196 0.206,0.389 0.308,0.584c0.006,0.011 0.012,0.023 0.019,0.035c0.375,0.712 0.775,1.414 1.202,2.103c0.97,1.566 2.127,3.035 3.453,4.361c1.326,1.327 2.795,2.483 4.361,3.453c3.13,1.942 6.693,3.174 10.411,3.566c0.784,0.083 1.572,0.125 2.363,0.125c3.215,0 6.382,-0.72 9.252,-2.092c0.024,-0.012 0.047,-0.024 0.071,-0.036c-1.797,2.347 -3.992,4.421 -6.491,6.094c-2.498,1.674 -5.292,2.929 -8.248,3.699c-0.004,0.001 -0.007,0.002 -0.011,0.003c1.52,0.148 3.049,0.225 4.577,0.225c3.579,0 7.158,-0.442 10.63,-1.316c3.249,-0.818 6.362,-2.053 9.246,-3.672c2.884,-1.619 5.541,-3.624 7.881,-5.965c2.341,-2.34 4.346,-4.997 5.965,-7.881c1.619,-2.884 2.854,-5.997 3.672,-9.246c0.874,-3.472 1.316,-7.05 1.316,-10.63c0,-1.528 -0.077,-3.056 -0.225,-4.577c-0.001,0.004 -0.002,0.007 -0.003,0.011c-0.77,2.955 -2.025,5.749 -3.699,8.247c-1.673,2.499 -3.747,4.694 -6.094,6.491c0.012,-0.024 0.024,-0.047 0.036,-0.071c2.745,-5.695 2.516,-12.401 -0.608,-17.889c-1.942,-3.13 -4.593,-5.779 -7.723,-7.721c-1.566,-0.971 -3.209,-1.778 -4.905,-2.397c-0.194,-0.071 -0.391,-0.133 -0.587,-0.199c0.002,0.004 0.003,0.008 0.005,0.013c-0.341,0.176 -0.677,0.362 -1.005,0.567c-2.428,1.508 -4.671,3.32 -6.653,5.403c-1.983,2.082 -3.693,4.41 -5.089,6.925c-2.649,4.764 -4.044,10.135 -4.044,15.535c0,16.759 12.496,29.254 12.496,29.254l29.254,-29.254Z' fill='%234CAF5020'/%3E%3C/svg%3E");
+}
+
+.eco-card {
+  @apply rounded-xl shadow-lg bg-white/90 dark:bg-eco-forest/50 backdrop-blur-sm border border-green-100 dark:border-green-900 hover:shadow-xl transition-shadow duration-300;
+}
+
+.btn-eco-primary {
+  @apply bg-eco-leaf hover:bg-eco-moss text-white font-medium py-2 px-4 rounded-full shadow-md hover:shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-eco-leaf focus:ring-opacity-50;
+}
+
+.btn-eco-secondary {
+  @apply bg-white hover:bg-eco-sand text-eco-forest font-medium py-2 px-4 rounded-full shadow-md hover:shadow-lg transition-all duration-300 border border-eco-leaf focus:outline-none focus:ring-2 focus:ring-eco-leaf focus:ring-opacity-50;
+}
+
+.eco-input {
+  @apply rounded-lg border border-green-200 dark:border-green-800 bg-white/90 dark:bg-eco-forest/30 backdrop-blur-sm px-4 py-2 focus:outline-none focus:ring-2 focus:ring-eco-leaf dark:focus:ring-eco-moss transition-all duration-300;
+}
+
+.leaf-decoration {
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  z-index: -1;
 }
