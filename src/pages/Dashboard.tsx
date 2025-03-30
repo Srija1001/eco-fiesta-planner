@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Plus, Calendar, Filter, SlidersHorizontal, Leaf } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -8,6 +8,7 @@ import EventCard from '../components/EventCard';
 
 const Dashboard = () => {
   const [activeFilter, setActiveFilter] = useState('all');
+  const navigate = useNavigate();
   
   const events = [
     {
@@ -66,6 +67,10 @@ const Dashboard = () => {
     }
   ];
 
+  const handleEventClick = (eventId: string) => {
+    navigate(`/events/${eventId}`);
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900">
       <Navbar />
@@ -107,6 +112,9 @@ const Dashboard = () => {
           </div>
           
           <div className="flex gap-2">
+            <Link to="/events" className="bg-white dark:bg-eco-forest/30 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-eco-forest/50 flex items-center">
+              <Calendar size={20} />
+            </Link>
             <button className="bg-white dark:bg-eco-forest/30 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-eco-forest/50">
               <Filter size={20} />
             </button>
@@ -128,7 +136,7 @@ const Dashboard = () => {
               location={event.location}
               attendees={event.attendees}
               imageUrl={event.imageUrl}
-              onClick={() => console.log(`Clicked event: ${event.title}`)}
+              onClick={() => handleEventClick(event.id)}
             />
           ))}
         </div>

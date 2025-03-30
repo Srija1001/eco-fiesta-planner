@@ -1,7 +1,7 @@
 
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Camera, MapPin, Calendar, Clock, Users, ChevronRight, Loader2 } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { Camera, MapPin, Calendar, Clock, Users, ChevronRight, Loader2, ArrowLeft } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ImageUploader from '../components/ImageUploader';
@@ -17,6 +17,26 @@ const VenueAnalysis = () => {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
+  const location2 = useLocation();
+  
+  // Extract eventId from query parameters if available
+  const queryParams = new URLSearchParams(location2.search);
+  const eventId = queryParams.get('eventId');
+  
+  useEffect(() => {
+    // If we're coming from an event detail page, pre-fill the form
+    if (eventId) {
+      // In a real app, fetch the event details from an API
+      // For now, we'll use mock data
+      setEventName("My Eco-Event");
+      setEventDate(new Date().toISOString().split('T')[0]);
+      const hours = new Date().getHours().toString().padStart(2, '0');
+      const minutes = new Date().getMinutes().toString().padStart(2, '0');
+      setEventTime(`${hours}:${minutes}`);
+      setLocation("Eco Venue");
+      setAttendees("50");
+    }
+  }, [eventId]);
 
   const handleImageUpload = (file: File) => {
     setVenueImage(file);
@@ -40,6 +60,11 @@ const VenueAnalysis = () => {
     setTimeout(() => {
       setIsAnalyzing(false);
       navigate('/decoration-ideas');
+      
+      toast({
+        title: "Analysis complete",
+        description: "Check out our eco-friendly decoration suggestions for your venue!",
+      });
     }, 3000);
   };
 
@@ -49,6 +74,16 @@ const VenueAnalysis = () => {
       
       <main className="flex-grow container mx-auto px-4 py-8">
         <div className="max-w-3xl mx-auto">
+          {eventId && (
+            <button 
+              onClick={() => navigate(`/events/${eventId}`)}
+              className="inline-flex items-center text-gray-600 dark:text-gray-300 hover:text-eco-leaf mb-6"
+            >
+              <ArrowLeft size={18} className="mr-2" />
+              Back to Event Details
+            </button>
+          )}
+          
           <h1 className="text-3xl font-bold text-eco-forest dark:text-white mb-2">Create New Event</h1>
           <p className="text-gray-600 dark:text-gray-300 mb-8">
             Enter your event details and upload a venue image to get eco-friendly decoration suggestions
