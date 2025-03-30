@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { Camera, Upload, X, Trash2 } from 'lucide-react';
+import { useToast } from '../hooks/use-toast';
 
 interface ImageUploaderProps {
   onImageUpload: (file: File) => void;
@@ -9,14 +10,31 @@ interface ImageUploaderProps {
 const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageUpload }) => {
   const [image, setImage] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
+  const { toast } = useToast();
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
+      if (!file.type.startsWith('image/')) {
+        toast({
+          title: "Invalid file type",
+          description: "Please upload an image file (JPEG, PNG, etc.)",
+          variant: "destructive"
+        });
+        return;
+      }
+
       const reader = new FileReader();
       reader.onload = () => {
         setImage(reader.result as string);
         onImageUpload(file);
+      };
+      reader.onerror = () => {
+        toast({
+          title: "Error reading file",
+          description: "There was a problem processing your image",
+          variant: "destructive"
+        });
       };
       reader.readAsDataURL(file);
     }
@@ -43,7 +61,20 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageUpload }) => {
         setImage(reader.result as string);
         onImageUpload(file);
       };
+      reader.onerror = () => {
+        toast({
+          title: "Error reading file",
+          description: "There was a problem processing your image",
+          variant: "destructive"
+        });
+      };
       reader.readAsDataURL(file);
+    } else {
+      toast({
+        title: "Invalid file type",
+        description: "Please upload an image file (JPEG, PNG, etc.)",
+        variant: "destructive"
+      });
     }
   };
 

@@ -27,7 +27,7 @@ const Navbar: React.FC = () => {
     <nav className="sticky top-0 z-50 backdrop-blur-md bg-white/90 dark:bg-eco-forest/90 border-b border-green-100 dark:border-green-900">
       <div className="container mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center gap-2">
+          <Link to="/dashboard" className="flex items-center gap-2">
             <Logo size="md" />
           </Link>
 

@@ -14,6 +14,8 @@ import Events from "./pages/Events";
 import EventDetails from "./pages/EventDetails";
 import VenueAnalysis from "./pages/VenueAnalysis";
 import DecorationIdeas from "./pages/DecorationIdeas";
+import Profile from "./pages/Profile";
+import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -33,6 +35,8 @@ const App = () => (
           <Route path="/events/:id" element={<EventDetails />} />
           <Route path="/venue-analysis" element={<VenueAnalysis />} />
           <Route path="/decoration-ideas" element={<DecorationIdeas />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/settings" element={<Settings />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
